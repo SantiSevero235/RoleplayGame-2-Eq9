@@ -1,7 +1,8 @@
 namespace RoleplayGame
 {
-    public class Shield
+    public class Shield : IEquipment
     {
+        public int AttackValue {get{return 0;}}
         public int DefenseValue
         {
             get

@@ -1,5 +1,8 @@
 ﻿using System;
 using RoleplayGame;
+/// <summary>
+/// Al ver el codigo, para poder aplicar interfaces lo que hicimos fue refactorizarlo.
+/// </summary>
 
 namespace Program
 {
@@ -7,7 +10,7 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            SpellsBook book = new SpellsBook();
+            /*SpellsBook book = new SpellsBook();
             book.Spells = new Spell[]{ new Spell() };
 
             Wizard gandalf = new Wizard("Gandalf");
@@ -28,7 +31,7 @@ namespace Program
 
             gimli.Cure();
 
-            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");*/
         }
     }
 }

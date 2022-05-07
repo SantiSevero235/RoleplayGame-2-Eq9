@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer
+    public class Archer : ICharacters
     {
         private int health = 100;
 
@@ -11,15 +12,18 @@ namespace RoleplayGame
 
         public string Name { get; set; }
         
-        public Bow Bow { get; set; }
-
-        public Helmet Helmet { get; set; }
+        private List<IEquipment> equipment = new List<IEquipment>();
 
         public int AttackValue
         {
             get
             {
-                return Bow.AttackValue;
+                int attack=0;
+                foreach (IEquipment equip in this.equipment)
+                {
+                    attack += equip.AttackValue;
+                }
+                return attack;
             }
         }
 
@@ -27,7 +31,12 @@ namespace RoleplayGame
         {
             get
             {
-                return Helmet.DefenseValue;
+                int defense=0;
+                foreach (IEquipment equip in this.equipment)
+                {
+                    defense += equip.DefenseValue;
+                }
+                return defense;
             }
         }
 
@@ -54,6 +63,14 @@ namespace RoleplayGame
         public void Cure()
         {
             this.Health = 100;
+        }
+        public void Equip(IEquipment equip)
+        {
+            this.equipment.Add(equip);
+        }
+        public void Unequip(IEquipment equip)
+        {
+            this.equipment.Remove(equip);
         }
     }
 }

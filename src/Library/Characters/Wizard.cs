@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Wizard
+    public class Wizard : ICharacters
     {
         private int health = 100;
 
@@ -8,18 +9,22 @@ namespace RoleplayGame
         {
             this.Name = name;
         }
+        private List<IEquipment> equipment = new List<IEquipment>();
 
-        public string Name { get; set; }
+        private string Name { get; set; }
 
-        public SpellsBook SpellsBook { get; set; }
-
-        public Staff Staff { get; set; }
+        private SpellsBook SpellsBook { get; set; }
 
         public int AttackValue
         {
             get
             {
-                return SpellsBook.AttackValue + Staff.AttackValue;
+                int attack =  SpellsBook.AttackValue;
+                foreach (IEquipment equip in this.equipment)
+                {
+                    attack += equip.AttackValue;
+                }
+                return attack;
             }
         }
 
@@ -27,7 +32,12 @@ namespace RoleplayGame
         {
             get
             {
-                return SpellsBook.DefenseValue + Staff.DefenseValue;
+                int defense =  SpellsBook.DefenseValue;
+                foreach (IEquipment equip in this.equipment)
+                {
+                    defense += equip.DefenseValue;
+                }
+                return defense;
             }
         }
 
@@ -54,6 +64,21 @@ namespace RoleplayGame
         public void Cure()
         {
             this.Health = 100;
+        }
+        public void Equip(IEquipment equip)
+        {
+            this.equipment.Add(equip);
+        }
+        public void Unequip(IEquipment equip)
+        {
+            this.equipment.Remove(equip);
+        }
+        public void EquipSpellbook(SpellsBook spellsBook)
+        {
+            if (spellsBook !=null)
+            {
+                this.SpellsBook = spellsBook;
+            }
         }
     }
 }
