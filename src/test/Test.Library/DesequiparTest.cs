@@ -1,4 +1,4 @@
-using NUnit.Framework;
+/*using NUnit.Framework;
 using Roleplay;
 
 namespace Test.Library
@@ -252,4 +252,4 @@ namespace Test.Library
             Assert.AreEqual(4, hechiceroTest.Equipamiento[4]);
         }
     }
-}
+}*/

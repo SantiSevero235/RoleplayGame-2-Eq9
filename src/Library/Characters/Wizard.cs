@@ -11,7 +11,7 @@ namespace RoleplayGame
         }
         private List<IEquipment> equipment = new List<IEquipment>();
 
-        private string Name { get; set; }
+        public string Name { get; set; }
 
         private SpellsBook SpellsBook { get; set; }
 

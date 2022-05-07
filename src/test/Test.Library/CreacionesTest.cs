@@ -1,4 +1,4 @@
-using NUnit.Framework;
+/*using NUnit.Framework;
 
 
 namespace Roleplay
@@ -8,9 +8,9 @@ namespace Roleplay
     public class SantiTests
     {
 
-        /*Los Tests se tratan de que coincidan tanto las cosas asignadas, Primero Creamos un personaje/hechizo/ataque, las llamamos a traves de 
+        Los Tests se tratan de que coincidan tanto las cosas asignadas, Primero Creamos un personaje/hechizo/ataque, las llamamos a traves de 
         (<variable>.accion), Asignamos un expected, un int o string que se espera que sea con nuestra creación, 
-        todas están hechas para que sean todas correctas. Se usa Assert.Equal para hacer la comparación para que coincida.*/
+        todas están hechas para que sean todas correctas. Se usa Assert.Equal para hacer la comparación para que coincida.
         
         [Test]
         // Prueba si se asigna correctamente el nombre del hechicero
@@ -174,4 +174,4 @@ namespace Roleplay
     }
 
 
-}
+}*/
