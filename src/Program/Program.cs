@@ -10,17 +10,21 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            /*SpellsBook book = new SpellsBook();
+            SpellsBook book = new SpellsBook();
             book.Spells = new Spell[]{ new Spell() };
 
             Wizard gandalf = new Wizard("Gandalf");
-            gandalf.Staff = new Staff();
-            gandalf.SpellsBook = book;
+            Staff staff = new Staff();
+            gandalf.Equip(staff);
+            gandalf.EquipSpellbook(book);
 
-            Dwarf gimli = new Dwarf("Gimli");
-            gimli.Axe = new Axe();
-            gimli.Helmet = new Helmet();
-            gimli.Shield = new Shield();
+            ICharacters gimli = new Dwarf("Gimli");
+            Axe axe = new Axe();
+            gimli.Equip(axe);
+            Helmet helmet = new Helmet();
+            gimli.Equip(helmet);
+            Shield shield = new Shield();
+            gimli.Equip(shield);
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
@@ -31,7 +35,7 @@ namespace Program
 
             gimli.Cure();
 
-            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");*/
+            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
         }
     }
 }
