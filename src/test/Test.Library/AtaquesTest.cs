@@ -3,7 +3,6 @@ using RoleplayGame;
 
 namespace Test.Library
 {
-    [TestFixture]
     public class TestAtaque
     {
         private ICharacters archerTest;
@@ -17,9 +16,6 @@ namespace Test.Library
         {
             archerTest = new Archer("Raul");
             knightTest = new Knight("Tusam");
-            //wizardTest = new Wizard("Richy");
-            //bookTest = new SpellsBook();
-            //bookTest.Spells = new Spell[]{ new Spell() };
             dwarfTest = new Dwarf("Thomas");
             armorTest = new Armor();
             axeTest = new Axe();
@@ -34,11 +30,13 @@ namespace Test.Library
             {
                 expecteddamage = archerTest.AttackValue - dwarfTest.DefenseValue;
             }
-            int expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
+            int expectedLifeAfterAttack = 0;
+            if ((dwarfTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
             dwarfTest.ReceiveAttack(archerTest.AttackValue);
-
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
+
         [Test]
 
         public void DamagevsDefense0()
@@ -49,39 +47,44 @@ namespace Test.Library
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
             }
-            int expectedLifeAfterAttack = archerTest.Health - expecteddamage;
+            int expectedLifeAfterAttack = 0;
+            if ((archerTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = archerTest.Health - expecteddamage;
             archerTest.ReceiveAttack(knightTest.AttackValue);
 
             Assert.AreEqual(expectedLifeAfterAttack, archerTest.Health);
         }
-        [Test]
 
+        [Test]
         public void Damage0vsDefense()
         {
             int expecteddamage = 0;
-            knightTest.Equip(armorTest);
+            archerTest.Equip(armorTest);
             if (knightTest.AttackValue - archerTest.DefenseValue > 0)
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
             }
-            int expectedLifeAfterAttack = archerTest.Health - expecteddamage;
+            int expectedLifeAfterAttack = 0;
+            if ((archerTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = archerTest.Health - expecteddamage;
             archerTest.ReceiveAttack(knightTest.AttackValue);
 
             Assert.AreEqual(expectedLifeAfterAttack, archerTest.Health);
         }
               
         [Test]
-
         public void DamagevsDefense()
         {
             int expecteddamage = 0;
-            knightTest.Equip(armorTest);
+            archerTest.Equip(armorTest);
             knightTest.Equip(axeTest);
             if (knightTest.AttackValue - archerTest.DefenseValue > 0)
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
             }
-            int expectedLifeAfterAttack = archerTest.Health - expecteddamage;
+            int expectedLifeAfterAttack = 0;
+            if ((archerTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = archerTest.Health - expecteddamage;
             archerTest.ReceiveAttack(knightTest.AttackValue);
 
             Assert.AreEqual(expectedLifeAfterAttack, archerTest.Health);  
