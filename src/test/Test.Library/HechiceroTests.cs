@@ -1,218 +1,174 @@
-/*using NUnit.Framework;
+using NUnit.Framework;
 using System;
-using Roleplay;
+using RoleplayGame;
 
 
 namespace Test.Library
 {
-
-    [TestFixture]
     public class Example
     {
-        private Arco arcoTest;
-        private Baculo baculoTest;
-        private Botas botasTest;
-        private Escudo escudoTest;
-        private Espada espadaTest;
-        private Grebas grebasTest;
-        private Pechera pecheraTest;
-        private Yelmo yelmoTest;
-        private Elfo elfoTest;
-        private Humano humanoTest;
-        private Enano enanoTest;
-        private Hechicero hechiceroTest;
-        private Hechicero hechiceroTest2;
+        private Wizard wizardTest;
+        private Staff staffTest;
+        private SpellsBook spellsBookTest;
+        private Spell spellTest1;
+        private Spell spellTest2;
+        private Spell spellTest3;
+        private Spell spellTest4;
+        private Dwarf dwarfTest;
+        private Armor armorTest;
+        private Axe axeTest;
+
+
         [SetUp]
         public void Setup()
         {
-            arcoTest = new Arco(100,0);
-            baculoTest = new Baculo(100);
-            botasTest = new Botas(0,200);
-            escudoTest =new Escudo(0,200);
-            espadaTest = new Espada(100,200);
-            grebasTest = new Grebas(0,200);
-            pecheraTest = new Pechera(0,200);
-            yelmoTest = new Yelmo(0,200);
-            elfoTest = new Elfo("Raul");
-            humanoTest = new Humano("Tusam");
-            hechiceroTest = new Hechicero("Richy");
-            hechiceroTest2 = new Hechicero("Pablo");
-            enanoTest = new Enano("Malboro");
-        }
-        [Test]
-        /// <summary>
-        /// Pruebo el hechizo inicial con el que se crean los magos y ademas si funciona
-        /// el ataque entre magos
-        /// </summary>
-        public void HechizoInicial()
-        {
-            int dañoEsperado = 0;
-            int dañoDeHechizo = hechiceroTest.UsarHechizoparaAtaque("Hechizo inicial");
-            if ((dañoDeHechizo - hechiceroTest2.Defensa) > 0)
-                dañoEsperado = dañoDeHechizo - hechiceroTest2.Defensa;
-            int vidaDespuesAtaque = hechiceroTest2.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaHechicero(hechiceroTest,"Hechizo inicial",hechiceroTest2);
-            Assert.AreEqual(vidaDespuesAtaque, hechiceroTest2.VidaActual);
+            wizardTest = new Wizard("Richy");
+            staffTest = new Staff();
+            spellsBookTest = new SpellsBook();
+            spellTest1 = new Spell();
+            spellTest2 = new Spell();
+            spellTest3 = new Spell();
+            spellTest4 = new Spell();
+            dwarfTest = new Dwarf("Thomas");
+            armorTest = new Armor();
+            axeTest = new Axe();
         }
 
-        [Test]
-        /// <summary>
-        /// Pruebo crear un hechizo y ver si su daño se graba correctamente y se utiliza luego al atacar.
-        /// </summary>
-        public void Hechizonuevo_daño()
-        {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            int dañoEsperado = 0;
-            int dañoporHechizo = hechiceroTest.UsarHechizoparaAtaque("cataplumba");
+/*
+atacar con hechizo
+    atacar con staff
+    atacar con ambos
+añadir hechizos a libro
+equipar libro
+equipar
+desequipar
+    curar
+*/
 
-            if ((dañoporHechizo - hechiceroTest2.Defensa) > 0)
-                dañoEsperado = dañoporHechizo - hechiceroTest2.Defensa;
-            int vidaDespuesAtaque = hechiceroTest2.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaHechicero(hechiceroTest,"cataplumba",hechiceroTest2);
-            Assert.AreEqual(vidaDespuesAtaque, hechiceroTest2.VidaActual);          
-
-        }
-        
         [Test]
-        // Prueba si se aumenta correctamente la defensa al utilizar un hechizo creado
-        public void Hechizonuevo_defender()
+        public void WizardEquipSpells()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            int defensaDespuesdeHechizo = hechiceroTest.Defensa + defensaDeHechizo;
-            hechiceroTest.UsarHechizoparaDefensa("cataplumba");
-            Assert.AreEqual(defensaDespuesdeHechizo, hechiceroTest.Defensa);
-        }
-        
-        [Test]
-        // Pruebo si cuando se crean dos hechizos iguales y se intentan añadir al libro de hechizos, se mantiene el primero con su atributo defensa intacto
-        public void Hechizosnuevos_defender2()
-        {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            int dañoDeHechizo2 = 2233;
-            int defensaDeHechizo2 = 1234;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo2,defensaDeHechizo2);
-            int defensaDespuesdeHechizo = hechiceroTest.Defensa + defensaDeHechizo;
-            hechiceroTest.UsarHechizoparaDefensa("cataplumba");
-            Assert.AreEqual(defensaDespuesdeHechizo, hechiceroTest.Defensa);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{spellTest1, spellTest2, spellTest3, spellTest4};
+            int expected = 70*4;
+            Assert.AreEqual(expected, wizardTest.AttackValue);
+            Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
         [Test]
-        // Pruebo si cuando se crean dos hechizos iguales y se intentan añadir al libro de hechizos, se mantiene el primero con su atributo daño intacto
-        public void Hechizonuevos_daño()
+        public void WizardEquipStaff()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            int dañoDeHechizo2 = 2212;
-            int defensaDeHechizo2 = 1233;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo2,defensaDeHechizo2);
-            int dañoEsperado = 0;
-            int dañoporHechizo = hechiceroTest.UsarHechizoparaAtaque("cataplumba");
-
-            if ((dañoporHechizo - hechiceroTest2.Defensa) > 0)
-                dañoEsperado = dañoporHechizo - hechiceroTest2.Defensa;
-            int vidaDespuesAtaque = hechiceroTest2.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaHechicero(hechiceroTest,"cataplumba",hechiceroTest2);
-            Assert.AreEqual(vidaDespuesAtaque, hechiceroTest2.VidaActual);          
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.Equip(staffTest);
+            int expected = 70 + 100;
+            Assert.AreEqual(expected, wizardTest.AttackValue);
+            Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
         [Test]
-        // Pruebo si al grabar dos hechizos, se almacena correctamente la defensa del primero
-        public void Hechizosnuevos_defender2_Hechizosdistintos_1()
+        public void WizardUnequipStaff()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            int dañoDeHechizo2 = 2233;
-            int defensaDeHechizo2 = 1234;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            hechiceroTest.AprenderHechizo("Silantro",dañoDeHechizo2,defensaDeHechizo2);
-            int defensaDespuesdeHechizo = hechiceroTest.Defensa + defensaDeHechizo;
-            hechiceroTest.UsarHechizoparaDefensa("cataplumba");
-            Assert.AreEqual(defensaDespuesdeHechizo, hechiceroTest.Defensa);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.Equip(staffTest);
+            wizardTest.Unequip(staffTest);
+            int expected = 70;
+            Assert.AreEqual(expected, wizardTest.AttackValue);
+            Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
         [Test]
-        // Pruebo si al grabar dos hechizos, se almacena correctamente la defensa del segundo
-        public void Hechizosnuevos_defender2_Hechizosdistintos_2()
+        public void WizardDefenseSpells()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            int dañoDeHechizo2 = 2233;
-            int defensaDeHechizo2 = 1234;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            hechiceroTest.AprenderHechizo("Silantro",dañoDeHechizo2,defensaDeHechizo2);
-            int defensaDespuesdeHechizo = hechiceroTest.Defensa + defensaDeHechizo2;
-            hechiceroTest.UsarHechizoparaDefensa("Silantro");
-            Assert.AreEqual(defensaDespuesdeHechizo, hechiceroTest.Defensa);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            int expecteddamage = 0;
+            dwarfTest.Equip(axeTest);
+            if (dwarfTest.AttackValue - wizardTest.DefenseValue > 0)
+            {
+                expecteddamage = dwarfTest.AttackValue - wizardTest.DefenseValue;
+            }
+            int expectedLifeAfterAttack = 0;
+            if ((wizardTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = wizardTest.Health - expecteddamage;
+            wizardTest.ReceiveAttack(dwarfTest.AttackValue);
+            Assert.AreEqual(expectedLifeAfterAttack, wizardTest.Health);
         }
 
         [Test]
-        // Pruebo si al utilizar dos veces el mismo hechizo de forma defensiva, incrementa correctamente la defensa
-        public void AtacarConElMismoHechizo2Veces()
+        public void WizardAttackSpells()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("cataplumba",dañoDeHechizo,defensaDeHechizo);
-            int defensaDespuesdeHechizo = hechiceroTest.Defensa + defensaDeHechizo*2;
-            hechiceroTest.UsarHechizoparaDefensa("cataplumba");
-            hechiceroTest.UsarHechizoparaDefensa("cataplumba");
-            Assert.AreEqual(defensaDespuesdeHechizo, hechiceroTest.Defensa);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            int expecteddamage = 0;
+            dwarfTest.Equip(armorTest);
+            if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
+            {
+                expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
+            }
+            int expectedLifeAfterAttack = 0;
+            if ((dwarfTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
+            dwarfTest.ReceiveAttack(wizardTest.DefenseValue);
+            Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
 
         [Test]
-        // Pruebo atacar al elfo con un hechizo
-        public void AtacarAElfo()
+        public void WizardDefenseStaff()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("ataplumbac",dañoDeHechizo,defensaDeHechizo);
-            int dañoEsperado = 0;
-            int dañoDePoder = hechiceroTest.UsarHechizoparaAtaque("ataplumbac");
-            if ((dañoDePoder - elfoTest.Defensa) > 0)
-                dañoEsperado = dañoDePoder - elfoTest.Defensa;
-            int vidaDespuesAtaque = elfoTest.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaElfo(hechiceroTest,"ataplumbac",elfoTest);
-            Assert.AreEqual(vidaDespuesAtaque, elfoTest.VidaActual);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.Equip(staffTest);
+            int expecteddamage = 0;
+            dwarfTest.Equip(axeTest);
+            if (dwarfTest.AttackValue - wizardTest.DefenseValue > 0)
+            {
+                expecteddamage = dwarfTest.AttackValue - wizardTest.DefenseValue;
+            }
+            int expectedLifeAfterAttack = 0;
+            if ((wizardTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = wizardTest.Health - expecteddamage;
+            wizardTest.ReceiveAttack(dwarfTest.AttackValue);
+            Assert.AreEqual(expectedLifeAfterAttack, wizardTest.Health);
         }
 
         [Test]
-        // Pruebo atacar al enano con un hechizo
-        public void AtacarAEnano()
+        public void WizardAttackStaff()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("ataplumbac",dañoDeHechizo,defensaDeHechizo);
-            int dañoEsperado = 0;
-            int dañoDePoder = hechiceroTest.UsarHechizoparaAtaque("ataplumbac");
-            if ((dañoDePoder - enanoTest.Defensa) > 0)
-                dañoEsperado = dañoDePoder - enanoTest.Defensa;
-            int vidaDespuesAtaque = enanoTest.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaEnano(hechiceroTest,"ataplumbac",enanoTest);
-            Assert.AreEqual(vidaDespuesAtaque, enanoTest.VidaActual);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{};
+            wizardTest.Equip(staffTest);
+            int expecteddamage = 0;
+            dwarfTest.Equip(armorTest);
+            if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
+            {
+                expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
+            }
+            int expectedLifeAfterAttack = 0;
+            if ((dwarfTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
+            dwarfTest.ReceiveAttack(wizardTest.DefenseValue);
+            Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
 
         [Test]
-        // Pruebo atacar al humano con un hechizo
-        public void AtacarAHumano()
+        public void WizardAttackWithAll()
         {
-            int dañoDeHechizo = 221;
-            int defensaDeHechizo = 123;
-            hechiceroTest.AprenderHechizo("ataplumbac",dañoDeHechizo,defensaDeHechizo);
-            int dañoEsperado = 0;
-            int dañoDePoder = hechiceroTest.UsarHechizoparaAtaque("ataplumbac");
-            if ((dañoDePoder - humanoTest.Defensa) > 0)
-                dañoEsperado = dañoDePoder - humanoTest.Defensa;
-            int vidaDespuesAtaque = humanoTest.VidaActual - dañoEsperado;
-            AtaquesconHechizo.AtaqueaHumano(hechiceroTest,"ataplumbac",humanoTest);
-            Assert.AreEqual(vidaDespuesAtaque, humanoTest.VidaActual);
+            wizardTest.EquipSpellbook(spellsBookTest);
+            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.Equip(staffTest);
+            int expecteddamage = 0;
+            dwarfTest.Equip(armorTest);
+            if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
+            {
+                expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
+            }
+            int expectedLifeAfterAttack = 0;
+            if ((dwarfTest.Health - expecteddamage) > 0)
+                expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
+            dwarfTest.ReceiveAttack(wizardTest.DefenseValue);
+            Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
-        
-
     }
-}*/
+}

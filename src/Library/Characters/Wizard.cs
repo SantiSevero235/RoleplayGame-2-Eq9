@@ -75,7 +75,7 @@ namespace RoleplayGame
         }
         public void EquipSpellbook(SpellsBook spellsBook)
         {
-            if (spellsBook !=null)
+            if (this.SpellsBook == null)
             {
                 this.SpellsBook = spellsBook;
             }
