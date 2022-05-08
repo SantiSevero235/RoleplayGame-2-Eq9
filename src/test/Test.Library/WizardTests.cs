@@ -5,7 +5,11 @@ using RoleplayGame;
 
 namespace Test.Library
 {
-    public class Example
+    /// <summary>
+    /// Se crearon los test de la clase wizard por seperado, debido a que posee atributos y metodos distinto a
+    /// los demas ICharacters, por lo cual merece un testing mas exhaustivo debido a sus caracteristicas magicas.
+    /// </summary>
+    public class WizardTests
     {
         private Wizard wizardTest;
         private Staff staffTest;
@@ -33,17 +37,6 @@ namespace Test.Library
             armorTest = new Armor();
             axeTest = new Axe();
         }
-
-/*
-atacar con hechizo
-    atacar con staff
-    atacar con ambos
-añadir hechizos a libro
-equipar libro
-equipar
-desequipar
-    curar
-*/
 
         [Test]
         public void WizardEquipSpells()
