@@ -4,7 +4,10 @@ namespace RoleplayGame
 {
     /// <summary>
     /// No se agrega a la interfaz de IEquipment porque tomando en cuenta las historias de usuario no deberia poder
-    /// ser utilizado por otras clases que no sean el mago.
+    /// ser utilizado por otras clases que no sean el mago. Si se implementara la interface en esta clase,
+    /// sería posible almacenar libros de hechizos en el equipamiento de un personaje que no sea el mago,
+    /// dado que son listas de IEquipment, pero como se dice que el libro de hechizos es el conocimiento
+    /// del mago, no se debe poder almacenar un libro en un personaje distinto.
     /// </summary>
     public class SpellsBook
     {
