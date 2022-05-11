@@ -9,6 +9,14 @@ namespace RoleplayGame
         {
             this.Name = name;
         }
+
+        /*
+        Se crea una lista de equipamiento con el objetivo de poder equipar en un personaje cualquier item del
+        tipo IEquipment. El equipar los items utilizando atributos no es una buena idea, dado que los items
+        pasan a ser parte de los personajes, y no se pueden ni añadir ni remover items sin modificar la clase.
+        Por esta razon se utiliza una lista, y gracias a los tipos genericos se pueden añadir distintos items,
+        siempre y cuando pertenezcan a IEquipment.
+        */
         private List<IEquipment> equipment = new List<IEquipment>();
 
         public string Name { get; set; }
