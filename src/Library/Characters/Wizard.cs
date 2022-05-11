@@ -19,7 +19,11 @@ namespace RoleplayGame
         {
             get
             {
-                int attack =  SpellsBook.AttackValue;
+                int attack = 0;
+                if (this.SpellsBook != null)
+                {
+                    attack +=  SpellsBook.AttackValue;
+                }
                 foreach (IEquipment equip in this.equipment)
                 {
                     attack += equip.AttackValue;
@@ -32,7 +36,11 @@ namespace RoleplayGame
         {
             get
             {
-                int defense =  SpellsBook.DefenseValue;
+                int defense = 0;
+                if (this.SpellsBook != null)
+                {
+                    defense +=  SpellsBook.DefenseValue;
+                }
                 foreach (IEquipment equip in this.equipment)
                 {
                     defense += equip.DefenseValue;
