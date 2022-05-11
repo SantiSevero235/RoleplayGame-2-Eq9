@@ -24,13 +24,17 @@ namespace Test.Library
             armorTest = new Armor();
             axeTest = new Axe();
         }
+
+        // Se prueba si al equipar un baculo se modifica correctamente la defensa
         [Test]
-        public void WizardEquipStaffDefence()
+        public void WizardEquipStaffDefense()
         {
             wizardTest.Equip(staffTest);
             int expected = 100;
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
+
+        // Se prueba si al equipar un baculo se modifica correctamente el ataque
         [Test]
         public void WizardEquipStaffAttack()
         {
@@ -39,7 +43,7 @@ namespace Test.Library
             Assert.AreEqual(expected, wizardTest.AttackValue);  
         }
 
-
+        // Se prueba si al desequipar un baculo se modifica correctamente el ataque
         [Test]
         public void WizardUnequipStaffAttack()
         {
@@ -48,8 +52,10 @@ namespace Test.Library
             int expected = 0;
             Assert.AreEqual(expected, wizardTest.AttackValue);
         }
+
+        // Se prueba si al desequipar un baculo se modifica correctamente la defensa
         [Test]
-        public void WizardUnequipStaffDefence()
+        public void WizardUnequipStaffDefense()
         {
             wizardTest.Equip(staffTest);
             wizardTest.Unequip(staffTest);
@@ -57,13 +63,16 @@ namespace Test.Library
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
+        // Se prueba si al equipar un item de ataque se modifica correctamente la defensa
         [Test]
-        public void DwarfEquipAxeDefence()
+        public void DwarfEquipAxeDefense()
         {
             dwarfTest.Equip(axeTest);
             int expected = 0;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
+
+        // Se prueba si al equipar un item de ataque se modifica correctamente el ataque
         [Test]
         public void DwarfEquipAxeAttack()
         {
@@ -72,7 +81,7 @@ namespace Test.Library
             Assert.AreEqual(expected, dwarfTest.AttackValue);  
         }
 
-
+        // Se prueba si al desequipar un item de ataque se modifica correctamente el ataque
         [Test]
         public void DwarfUnequipAxeAttack()
         {
@@ -81,21 +90,27 @@ namespace Test.Library
             int expected = 0;
             Assert.AreEqual(expected, dwarfTest.AttackValue);
         }
+
+        // Se prueba si al desequipar un item de ataque se modifica correctamente la defensa
         [Test]
-        public void DwarfUnequipAxeDefence()
+        public void DwarfUnequipAxeDefense()
         {
             dwarfTest.Equip(axeTest);
             dwarfTest.Unequip(axeTest);
             int expected = 0;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
+
+        // Se prueba si al equipar un item de defensa se modifica correctamente la defensa
         [Test]
-        public void DwarfEquipArmorDefence()
+        public void DwarfEquipArmorDefense()
         {
             dwarfTest.Equip(armorTest);
             int expected = 25;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
+
+        // Se prueba si al equipar un item de defensa se modifica correctamente el ataque
         [Test]
         public void DwarfEquipArmorAttack()
         {
@@ -104,7 +119,7 @@ namespace Test.Library
             Assert.AreEqual(expected, dwarfTest.AttackValue);  
         }
 
-
+        // Se prueba si al desequipar un item de defensa se modifica correctamente el ataque
         [Test]
         public void DwarfUnequipArmorAttack()
         {
@@ -113,8 +128,10 @@ namespace Test.Library
             int expected = 0;
             Assert.AreEqual(expected, dwarfTest.AttackValue);
         }
+
+        // Se prueba si al desequipar un item de defensa se modifica correctamente la defensa
         [Test]
-        public void DwarfUnequipArmorDefence()
+        public void DwarfUnequipArmorDefense()
         {
             dwarfTest.Equip(armorTest);
             dwarfTest.Unequip(armorTest);
