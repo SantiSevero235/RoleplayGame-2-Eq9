@@ -49,29 +49,6 @@ namespace Test.Library
         }
 
         [Test]
-        public void WizardEquipStaff()
-        {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
-            wizardTest.Equip(staffTest);
-            int expected = 70 + 100;
-            Assert.AreEqual(expected, wizardTest.AttackValue);
-            Assert.AreEqual(expected, wizardTest.DefenseValue);
-        }
-
-        [Test]
-        public void WizardUnequipStaff()
-        {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
-            wizardTest.Equip(staffTest);
-            wizardTest.Unequip(staffTest);
-            int expected = 70;
-            Assert.AreEqual(expected, wizardTest.AttackValue);
-            Assert.AreEqual(expected, wizardTest.DefenseValue);
-        }
-
-        [Test]
         public void WizardDefenseSpells()
         {
             wizardTest.EquipSpellbook(spellsBookTest);
@@ -108,7 +85,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void WizardDefenseStaff()
+        public void WizardDefendWithStaff()
         {
             wizardTest.EquipSpellbook(spellsBookTest);
             spellsBookTest.Spells = new Spell[]{ new Spell() };
@@ -127,7 +104,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void WizardAttackStaff()
+        public void WizardAttackWithStaff()
         {
             wizardTest.EquipSpellbook(spellsBookTest);
             spellsBookTest.Spells = new Spell[]{};
