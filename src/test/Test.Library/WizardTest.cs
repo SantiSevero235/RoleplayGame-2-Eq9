@@ -37,7 +37,6 @@ namespace Test.Library
             armorTest = new Armor();
             axeTest = new Axe();
         }
-
         // Se prueba si los hechizos se equipan correctamente.
         // Si el hechizo se equipa correctamente el ataque debe variar segun los hechizos agregados. 
         [Test]
@@ -145,6 +144,43 @@ namespace Test.Library
                 expectedLifeAfterAttack = dwarfTest.Health - expecteddamage;
             dwarfTest.ReceiveAttack(wizardTest.DefenseValue);
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
+        }
+        // Se prueba si al equipar un baculo se modifica correctamente la defensa
+        [Test]
+        public void WizardEquipStaffDefense()
+        {
+            int expected = wizardTest.DefenseValue + staffTest.DefenseValue;
+            wizardTest.Equip(staffTest);
+            Assert.AreEqual(expected, wizardTest.DefenseValue);
+        }
+
+        // Se prueba si al equipar un baculo se modifica correctamente el ataque
+        [Test]
+        public void WizardEquipStaffAttack()
+        {
+            int expected = wizardTest.AttackValue + staffTest.AttackValue;
+            wizardTest.Equip(staffTest);
+            Assert.AreEqual(expected, wizardTest.AttackValue);  
+        }
+
+        // Se prueba si al desequipar un baculo se modifica correctamente el ataque
+        [Test]
+        public void WizardUnequipStaffAttack()
+        {
+            int expected = wizardTest.AttackValue;
+            wizardTest.Equip(staffTest);
+            wizardTest.Unequip(staffTest);
+            Assert.AreEqual(expected, wizardTest.AttackValue);
+        }
+
+        // Se prueba si al desequipar un baculo se modifica correctamente la defensa
+        [Test]
+        public void WizardUnequipStaffDefense()
+        {
+            int expected = wizardTest.DefenseValue;
+            wizardTest.Equip(staffTest);
+            wizardTest.Unequip(staffTest);
+            Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
     }
 }
