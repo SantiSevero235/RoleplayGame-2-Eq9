@@ -21,8 +21,8 @@ namespace Test.Library
             axeTest = new Axe();
         }
 
+        // Se prueba hacer un ataque sin items equipados
         [Test]
-
         public void Damage0vsDefense0()
         {
             int expecteddamage = 0;
@@ -37,8 +37,9 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
 
+        // Se prueba hacer un ataque con un item de ataque (en el atacante)
+        //y sin item de defensa (en el atacado) equipados
         [Test]
-
         public void DamagevsDefense0()
         {
             int expecteddamage = 0;
@@ -55,6 +56,8 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, archerTest.Health);
         }
 
+        // Se prueba hacer un ataque sin item de ataque (en el atacante)
+        //y con item de defensa (en el atacado) equipados
         [Test]
         public void Damage0vsDefense()
         {
@@ -71,7 +74,9 @@ namespace Test.Library
 
             Assert.AreEqual(expectedLifeAfterAttack, archerTest.Health);
         }
-              
+
+        // Se prueba hacer un ataque con un item de ataque (en el atacante)
+        //y con item de defensa (en el atacado) equipados     
         [Test]
         public void DamagevsDefense()
         {

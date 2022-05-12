@@ -38,6 +38,7 @@ namespace Test.Library
             axeTest = new Axe();
         }
 
+        // Se prueba si los hechizos se equipan correctamente
         [Test]
         public void WizardEquipSpells()
         {
@@ -48,6 +49,7 @@ namespace Test.Library
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
+        // Se prueba si los hechizos funcionan correctamente durante la defensa
         [Test]
         public void WizardDefenseSpells()
         {
@@ -66,6 +68,7 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, wizardTest.Health);
         }
 
+        // Se prueba si los hechizos funcionan correctamente durante el ataque
         [Test]
         public void WizardAttackSpells()
         {
@@ -84,6 +87,7 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
 
+        // Se prueba defender con el baculo equipado
         [Test]
         public void WizardDefendWithStaff()
         {
@@ -103,6 +107,7 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, wizardTest.Health);
         }
 
+        // Se prueba atacar con el baculo equipado
         [Test]
         public void WizardAttackWithStaff()
         {
@@ -122,6 +127,7 @@ namespace Test.Library
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
 
+        // Se prueba atacar con hechizos y baculo equipados a la vez
         [Test]
         public void WizardAttackWithAll()
         {
