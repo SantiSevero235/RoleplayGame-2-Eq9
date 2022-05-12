@@ -29,8 +29,8 @@ namespace Test.Library
         [Test]
         public void WizardEquipStaffDefense()
         {
+            int expected = wizardTest.DefenseValue + staffTest.DefenseValue;
             wizardTest.Equip(staffTest);
-            int expected = 100;
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
@@ -38,8 +38,8 @@ namespace Test.Library
         [Test]
         public void WizardEquipStaffAttack()
         {
+            int expected = wizardTest.AttackValue + staffTest.AttackValue;
             wizardTest.Equip(staffTest);
-            int expected = 100;
             Assert.AreEqual(expected, wizardTest.AttackValue);  
         }
 
@@ -47,9 +47,9 @@ namespace Test.Library
         [Test]
         public void WizardUnequipStaffAttack()
         {
+            int expected = wizardTest.AttackValue;
             wizardTest.Equip(staffTest);
             wizardTest.Unequip(staffTest);
-            int expected = 0;
             Assert.AreEqual(expected, wizardTest.AttackValue);
         }
 
@@ -57,9 +57,9 @@ namespace Test.Library
         [Test]
         public void WizardUnequipStaffDefense()
         {
+            int expected = wizardTest.DefenseValue;
             wizardTest.Equip(staffTest);
             wizardTest.Unequip(staffTest);
-            int expected = 0;
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
@@ -67,8 +67,8 @@ namespace Test.Library
         [Test]
         public void DwarfEquipAxeDefense()
         {
+            int expected = dwarfTest.DefenseValue + axeTest.DefenseValue;
             dwarfTest.Equip(axeTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
 
@@ -76,8 +76,8 @@ namespace Test.Library
         [Test]
         public void DwarfEquipAxeAttack()
         {
+            int expected = dwarfTest.AttackValue + axeTest.AttackValue;
             dwarfTest.Equip(axeTest);
-            int expected = 25;
             Assert.AreEqual(expected, dwarfTest.AttackValue);  
         }
 
@@ -85,9 +85,9 @@ namespace Test.Library
         [Test]
         public void DwarfUnequipAxeAttack()
         {
+            int expected = wizardTest.AttackValue;
             dwarfTest.Equip(axeTest);
             dwarfTest.Unequip(axeTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.AttackValue);
         }
 
@@ -95,9 +95,9 @@ namespace Test.Library
         [Test]
         public void DwarfUnequipAxeDefense()
         {
+            int expected = wizardTest.DefenseValue;
             dwarfTest.Equip(axeTest);
             dwarfTest.Unequip(axeTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
 
@@ -105,8 +105,8 @@ namespace Test.Library
         [Test]
         public void DwarfEquipArmorDefense()
         {
+            int expected = dwarfTest.DefenseValue + armorTest.DefenseValue;
             dwarfTest.Equip(armorTest);
-            int expected = 25;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
 
@@ -114,8 +114,8 @@ namespace Test.Library
         [Test]
         public void DwarfEquipArmorAttack()
         {
+            int expected = dwarfTest.AttackValue + armorTest.AttackValue;
             dwarfTest.Equip(armorTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.AttackValue);  
         }
 
@@ -123,9 +123,9 @@ namespace Test.Library
         [Test]
         public void DwarfUnequipArmorAttack()
         {
+            int expected = dwarfTest.AttackValue;
             dwarfTest.Equip(armorTest);
             dwarfTest.Unequip(armorTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.AttackValue);
         }
 
@@ -133,9 +133,9 @@ namespace Test.Library
         [Test]
         public void DwarfUnequipArmorDefense()
         {
+            int expected = dwarfTest.DefenseValue;
             dwarfTest.Equip(armorTest);
             dwarfTest.Unequip(armorTest);
-            int expected = 0;
             Assert.AreEqual(expected, dwarfTest.DefenseValue);
         }
 
