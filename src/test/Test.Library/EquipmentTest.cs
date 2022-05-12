@@ -29,8 +29,8 @@ namespace Test.Library
         [Test]
         public void WizardEquipStaffDefense()
         {
+            int expected = dwarfTest.DefenseValue + staffTest.DefenseValue;
             wizardTest.Equip(staffTest);
-            int expected = 100;
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
@@ -38,8 +38,8 @@ namespace Test.Library
         [Test]
         public void WizardEquipStaffAttack()
         {
+            int expected = dwarfTest.AttackValue + staffTest.AttackValue;
             wizardTest.Equip(staffTest);
-            int expected = 100;
             Assert.AreEqual(expected, wizardTest.AttackValue);  
         }
 
@@ -47,9 +47,9 @@ namespace Test.Library
         [Test]
         public void WizardUnequipStaffAttack()
         {
+            int expected = dwarfTest.AttackValue;
             wizardTest.Equip(staffTest);
             wizardTest.Unequip(staffTest);
-            int expected = 0;
             Assert.AreEqual(expected, wizardTest.AttackValue);
         }
 
@@ -57,9 +57,9 @@ namespace Test.Library
         [Test]
         public void WizardUnequipStaffDefense()
         {
+            int expected = dwarfTest.DefenseValue; 
             wizardTest.Equip(staffTest);
             wizardTest.Unequip(staffTest);
-            int expected = 0;
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
