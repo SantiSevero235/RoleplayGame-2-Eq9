@@ -145,6 +145,13 @@ namespace Test.Library
             dwarfTest.ReceiveAttack(wizardTest.DefenseValue);
             Assert.AreEqual(expectedLifeAfterAttack, dwarfTest.Health);
         }
+
+        /*
+        Se prueba el funcionamiento del baculo, dado que a partir de los cambios en el mago
+        se puede utilizar el mismo sin tener el libro de hechizos, y gracias a esto se puede crear una
+        instancia de mago sin necesidad de que comience obligatoriamente con un libro de hechizos.
+        */
+
         // Se prueba si al equipar un baculo se modifica correctamente la defensa
         [Test]
         public void WizardEquipStaffDefense()
