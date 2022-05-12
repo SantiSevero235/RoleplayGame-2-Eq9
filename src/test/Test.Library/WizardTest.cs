@@ -38,15 +38,15 @@ namespace Test.Library
             axeTest = new Axe();
         }
 
-        // Se prueba si los hechizos se equipan correctamente
+        // Se prueba si los hechizos se equipan correctamente.
+        // Si el hechizo se equipa correctamente el ataque debe variar segun los hechizos agregados. 
         [Test]
         public void WizardEquipSpells()
         {
             wizardTest.EquipSpellbook(spellsBookTest);
             spellsBookTest.Spells = new Spell[]{spellTest1, spellTest2, spellTest3, spellTest4};
-            int expected = 70*4;
+            int expected = spellTest1.AttackValue + spellTest2.AttackValue + spellTest3.AttackValue + spellTest4.AttackValue;
             Assert.AreEqual(expected, wizardTest.AttackValue);
-            Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
         // Se prueba si los hechizos funcionan correctamente durante la defensa
